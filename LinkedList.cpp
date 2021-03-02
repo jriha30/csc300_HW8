@@ -56,8 +56,46 @@ int LinkedList::removeEnd()
         delete(n); //if we didn't do this, we technically have a memory leak
         return value;
     }
-    
 }
+
+void LinkedList::addFront(int value)
+{
+    Node* n = new Node(value);
+    if(head == NULL)
+    {
+        //we have the empty list
+        this->head = n;
+        this->tail = n;
+    }
+    else
+    {
+        n->setNextNode(this->head);
+        this->head = n;
+    }
+}
+
+
+int LinkedList::removeFront()
+{
+    if(this->count > 0)
+    {
+        Node* n = this->head;
+        int value = n->getPayload();
+        if(this->count == 1)
+        {
+            this->head == NULL;
+            this->tail == NULL;
+        }
+        else
+        {
+            this->head = this->head->getNextNode();
+        }
+        this->count--;
+        delete(n); //if we didn't do this, we technically have a memory leak
+        return value;
+    }
+}
+
 void LinkedList::display()
 {
     if(this->count == 0)
@@ -74,5 +112,4 @@ void LinkedList::display()
         }
         cout << currNode->getPayload() << endl;
     }
-    
 }

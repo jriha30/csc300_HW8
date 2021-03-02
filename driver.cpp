@@ -19,10 +19,12 @@ int main(int argc, char** argv)
     ll->addEnd(6);
     ll->addEnd(8);
     ll->addEnd(2);
+    ll->addFront(1);
+    int value2 = ll->removeFront();
     ll->display();
     int value = ll->removeEnd();
     ll->display();
-    cout << value << endl;
+    cout << value << " " << value2 << endl;
     return 0;
 }
 
